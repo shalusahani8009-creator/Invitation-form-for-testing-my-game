@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>UniKho — Become a Game Tester</title>
+
+  <meta name="description"
+        content="Join the UniKho game testing program and help us improve the game before release.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(105, 75, 255, 0.35), transparent 38%),
+        radial-gradient(circle at 0% 80%, rgba(0, 190, 255, 0.12), transparent 30%),
+        #05060b;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 35px 35px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+    }
+
+    .container {
+      width: min(100% - 28px, 620px);
+      margin: auto;
+      padding: 34px 0 45px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      padding-top: 12px;
+    }
+
+    .game-icon {
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 22px;
+      border-radius: 31px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        linear-gradient(145deg, #8665ff, #321da5);
+
+      box-shadow:
+        0 0 45px rgba(111, 80, 255, 0.48),
+        inset 0 2px 5px rgba(255,255,255,0.38),
+        inset 0 -10px 22px rgba(0,0,0,0.30);
+
+      border: 1px solid rgba(255,255,255,0.20);
+      overflow: hidden;
+    }
+
+    .game-icon::before {
+      content: "";
+      position: absolute;
+      width: 76px;
+      height: 76px;
+      border-radius: 20px;
+      border: 2px solid rgba(255,255,255,0.25);
+      transform: rotate(45deg);
+    }
+
+    .game-icon::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 22px;
+      top: 14px;
+      left: 20px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transform: rotate(-25deg);
+      filter: blur(5px);
+    }
+
+    .game-icon span {
+      font-size: 50px;
+      font-weight: 900;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border-radius: 50px;
+
+      background: rgba(115, 88, 255, 0.13);
+      border: 1px solid rgba(145, 125, 255, 0.35);
+
+      color: #d3ccff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 10vw, 60px);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #c2b8ff,
+        #ffffff
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      color: #aaaabd;
+      font-size: 15px;
+      line-height: 1.65;
+      max-width: 490px;
+      margin: auto;
+    }
+
+    /* CARD */
+
+    .card {
+      margin-top: 30px;
+      padding: 27px;
+
+      border-radius: 27px;
+
+      background: rgba(15, 16, 25, 0.80);
+
+      border: 1px solid rgba(255,255,255,0.09);
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,0.48),
+        inset 0 1px rgba(255,255,255,0.06);
+
+      backdrop-filter: blur(20px);
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: #a5a5b7;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* FEATURES */
+
+    .features {
+      display: grid;
+      gap: 11px;
+      margin-top: 21px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+
+      padding: 14px;
+
+      border-radius: 16px;
+
+      background: rgba(255,255,255,0.035);
+
+      border: 1px solid rgba(255,255,255,0.055);
+    }
+
+    .feature-icon {
+      min-width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 12px;
+
+      background: rgba(111, 83, 255, 0.18);
+
+      font-size: 18px;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      color: #9090a3;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    /* TESTER AREA */
+
+    .tester-box {
+      margin-top: 28px;
+      padding-top: 25px;
+
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .tester-box h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .tester-box .small {
+      color: #858598;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    /* BUTTON */
+
+    .join-btn {
+      width: 100%;
+      min-height: 58px;
+
+      border: 0;
+      border-radius: 17px;
+
+      cursor: pointer;
+
+      color: white;
+
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+
+      background:
+        linear-gradient(135deg, #7a5cff, #4d2dde);
+
+      box-shadow:
+        0 14px 34px rgba(90, 60, 240, 0.32),
+        inset 0 1px rgba(255,255,255,0.30);
+
+      transition: 0.2s ease;
+    }
+
+    .join-btn:hover {
+      filter: brightness(1.12);
+      transform: translateY(-1px);
+    }
+
+    .join-btn:active {
+      transform: scale(0.98);
+    }
+
+    .notice {
+      margin-top: 13px;
+
+      text-align: center;
+
+      color: #676777;
+
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    /* INFO */
+
+    .info {
+      margin-top: 22px;
+
+      padding: 16px;
+
+      border-radius: 16px;
+
+      background: rgba(255,255,255,0.025);
+
+      border: 1px solid rgba(255,255,255,0.05);
+
+      color: #7f7f91;
+
+      font-size: 12px;
+      line-height: 1.6;
+
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 24px;
+
+      color: #555565;
+
+      font-size: 11px;
+    }
+
+    @media (max-width: 420px) {
+
+      .container {
+        width: min(100% - 18px, 620px);
+        padding-top: 25px;
+      }
+
+      .card {
+        padding: 21px;
+        border-radius: 23px;
+      }
+
+      .game-icon {
+        width: 98px;
+        height: 98px;
+        border-radius: 27px;
+      }
+
+      .game-icon span {
+        font-size: 43px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="container">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <!-- Temporary UniKho icon -->
+      <div class="game-icon">
+        <span>U</span>
+      </div>
+
+      <div class="badge">
+        Early Access Testing
+      </div>
+
+      <h1>UniKho</h1>
+
+      <p class="tagline">
+        Help us test, improve and polish the game before its wider release.
+      </p>
+
+    </section>
+
+
+    <!-- MAIN CARD -->
+
+    <section class="card">
+
+      <h2 class="section-title">
+        🎮 Become a Game Tester
+      </h2>
+
+      <p class="description">
+        UniKho is currently looking for players who are willing to try the
+        game before its public release. Your feedback can help us discover
+        bugs, improve gameplay and create a smoother gaming experience.
+      </p>
+
+
+      <!-- FEATURES -->
+
+      <div class="features">
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🧩
+          </div>
+
+          <div>
+            <strong>Play Early</strong>
+
+            <p>
+              Get the opportunity to experience UniKho before its wider release.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            🔍
+          </div>
+
+          <div>
+            <strong>Find Problems</strong>
+
+            <p>
+              Help us discover bugs, glitches and gameplay issues.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="feature">
+
+          <div class="feature-icon">
+            💡
+          </div>
+
+          <div>
+            <strong>Share Feedback</strong>
+
+            <p>
+              Your feedback can help us improve the game before launch.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TESTER REGISTRATION -->
+
+      <div class="tester-box">
+
+        <h2>
+          Join the Testing Team
+        </h2>
+
+        <p class="small">
+          Ready to help test UniKho?
+          Tap the button below and submit your Gmail ID through our
+          official testing registration form.
+        </p>
+
+
+        <!-- GOOGLE FORM BUTTON -->
+
+        <button
+          class="join-btn"
+          type="button"
+          onclick="openTesterForm()"
+        >
+          🚀 Join as a Tester
+        </button>
+
+
+        <p class="notice">
+          Your email will be collected through the official Google Form
+          for game testing communication.
+        </p>
+
+
+        <div class="info">
+          🔒 Your email is requested only for the purpose of
+          game testing and related communication.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      © 2026 UniKho • Game Testing Program
+    </footer>
+
+  </main>
+
+
+  <script>
+
+    /*
+      YOUR GOOGLE FORM LINK
+    */
+
+    const GOOGLE_FORM_URL =
+      "https://docs.google.com/forms/d/e/1FAIpQLScQMf8hQwQEkeppoAa4w1R24GBUvxCZR8cbFZyk6y1iZNWO7w/viewform";
+
+
+    function openTesterForm() {
+
+      window.location.href = GOOGLE_FORM_URL;
+
+    }
+
+  </script>
+
+</body>
+</html>
